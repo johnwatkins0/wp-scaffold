@@ -28,7 +28,7 @@ abstract class Module {
 	 *
 	 * @return bool
 	 */
-	abstract public function can_register();
+	abstract public function is_needed();
 
 	/**
 	 * Connects the Module with WordPress using Hooks and/or Filters.
