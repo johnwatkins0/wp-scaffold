@@ -110,7 +110,7 @@ class ModuleInitialization {
 				$slug  = $class_object['slug'];
 
 				// If the class can be registered, register it.
-				if ( $class->can_register() ) {
+				if ( $class->is_needed() ) {
 					// Call its register method.
 					$class->register();
 					// Store the class in the list of initialized classes.
