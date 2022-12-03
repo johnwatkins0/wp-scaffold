@@ -1,17 +1,17 @@
 <?php
 /**
- * Assets class
+ * PluginAssets class
  * 
  * @package TenUpPlugin
  */
 
-namespace TenUpPlugin\Assets;
+namespace TenUpPlugin\PluginAssets;
 
 use TenUpPlugin\Infrastructure\{Module, Registerable, Shared};
 use TenUpPlugin\Plugin;
 use WP_Error;
 
-final class Assets implements Registerable, Shared, Module {
+final class PluginAssets implements Registerable, Shared, Module {
 	/**
 	 * Plugin instance.
 	 * 

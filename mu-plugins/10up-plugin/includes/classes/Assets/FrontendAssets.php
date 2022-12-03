@@ -5,7 +5,7 @@
  * @package TenUpPlugin
  */
 
-namespace TenUpPlugin\Assets;
+namespace TenUpPlugin\PluginAssets;
 
 use TenUpPlugin\Infrastructure\{Module, Conditional, Registerable, Shared};
 use TenUpPlugin\Plugin;
@@ -19,11 +19,11 @@ final class FrontendAssets implements Conditional, Registerable, Shared, Module 
 	private $plugin;
 
 	/**
-	 * Assets instance.
+	 * PluginAssets instance.
 	 * 
-	 * @var Assets
+	 * @var PluginAssets
 	 */
-	private $assets;
+	private $plugin_assets;
 
 	/**
 	 * Returns whether the service should be registered.
@@ -39,11 +39,11 @@ final class FrontendAssets implements Conditional, Registerable, Shared, Module 
 	 * Constructor.
 	 * 
 	 * @param Plugin $plugin Plugin instance.
-	 * @param Assets $assets Assets instance.
+	 * @param PluginAssets $plugin_assets PluginAssets instance.
 	 */
-	public function __construct( Plugin $plugin, Assets $assets ) {
+	public function __construct( Plugin $plugin, PluginAssets $plugin_assets ) {
 		$this->plugin = $plugin;
-		$this->assets = $assets;
+		$this->plugin_assets = $plugin_assets;
 	}
 	
 	/**
@@ -63,16 +63,16 @@ final class FrontendAssets implements Conditional, Registerable, Shared, Module 
 
 		wp_enqueue_script(
 			'tenup_plugin_shared',
-			$this->assets->script_url( 'shared', 'shared' ),
-			$this->assets->get_asset_info( 'shared', 'dependencies' ),
+			$this->plugin_assets->script_url( 'shared', 'shared' ),
+			$this->plugin_assets->get_asset_info( 'shared', 'dependencies' ),
 			$this->plugin->get_version(),
 			true
 		);
 
 		wp_enqueue_script(
 			'tenup_plugin_frontend',
-			$this->assets->script_url( 'frontend', 'frontend' ),
-			$this->assets->get_asset_info( 'frontend', 'dependencies' ),
+			$this->plugin_assets->script_url( 'frontend', 'frontend' ),
+			$this->plugin_assets->get_asset_info( 'frontend', 'dependencies' ),
 			$this->plugin->get_version(),
 			true
 		);
@@ -88,7 +88,7 @@ final class FrontendAssets implements Conditional, Registerable, Shared, Module 
 
 		wp_enqueue_style(
 			'tenup_plugin_shared',
-			$this->assets->style_url( 'shared', 'shared' ),
+			$this->plugin_assets->style_url( 'shared', 'shared' ),
 			[],
 			$this->plugin->get_version()
 		);
@@ -96,7 +96,7 @@ final class FrontendAssets implements Conditional, Registerable, Shared, Module 
 		
 		wp_enqueue_style(
 			'tenup_plugin_frontend',
-			$this->assets->style_url( 'frontend', 'frontend' ),
+			$this->plugin_assets->style_url( 'frontend', 'frontend' ),
 			[],
 			$this->plugin->get_version()
 		);
